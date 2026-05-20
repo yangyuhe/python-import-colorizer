@@ -1,0 +1,27 @@
+{
+  "name": "python-import-colorizer",
+  "displayName": "Python Import Colorizer",
+  "description": "Colorize Python imports by source: local or external",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Programming Languages"],
+  "activationEvents": ["onLanguage:python"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configurationDefaults": {
+      "[python]": {
+        "editor.semanticHighlighting.enabled": true
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.3.0"
+  }
+}
