@@ -9,3 +9,4 @@ pnpm-lock.yaml
 **/*.map
 out/__tests__/**
 out/__mocks__/**
+*.vsix
