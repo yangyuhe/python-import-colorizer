@@ -7,8 +7,9 @@
     "sourceMap": true,
     "rootDir": "src",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "out"]
+  "exclude": ["node_modules", "out", "src/__tests__", "src/__mocks__"]
 }
