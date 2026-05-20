@@ -1,6 +1,9 @@
 # Python Import Colorizer
 
 [![GitHub](https://img.shields.io/badge/GitHub-yangyuhe/python--import--colorizer-blue?logo=github)](https://github.com/yangyuhe/python-import-colorizer)
+[![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue?logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=hexiang.python-import-colorizer)
+
+[English](./README.en.md) | 中文
 
 一个 VS Code 插件，用于区分并着色 Python 导入语句：**本地导入**和**外部导入**一目了然。
 
