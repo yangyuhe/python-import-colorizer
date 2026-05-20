@@ -51,7 +51,7 @@ async function getLocalModules(
   return modules;
 }
 
-function parseImports(text: string): ImportInfo[] {
+export function parseImports(text: string): ImportInfo[] {
   const imports: ImportInfo[] = [];
   const lines = text.split("\n");
 
