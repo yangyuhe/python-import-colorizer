@@ -3,64 +3,64 @@
 [![GitHub](https://img.shields.io/badge/GitHub-yangyuhe/python--import--colorizer-blue?logo=github)](https://github.com/yangyuhe/python-import-colorizer)
 [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue?logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=hexiang.python-import-colorizer)
 
-[English](./README.en.md) | 中文
+English | [中文](./README.zh.md)
 
-一个 VS Code 插件，用于区分并着色 Python 导入语句：**本地导入**和**外部导入**一目了然。
+A VS Code extension that colorizes Python imports by source: **local** or **external** at a glance.
 
-## 功能介绍
+## Features
 
-### 核心功能
+### Core Features
 
-- **自动识别导入类型**：自动分析 Python 文件中的 `import` 和 `from ... import` 语句
-- **区分本地/外部导入**：
-  - **本地导入**（青色/绿色）：相对导入（如 `from .xxx import`）以及工作区中定义的模块
-  - **外部导入**（黄色/棕色）：来自第三方库或 Python 标准库的模块
-- **实时更新**：文件内容变化时自动更新着色（带防抖机制，300ms 延迟）
-- **智能缓存**：工作区模块列表缓存 10 秒，文件变更时自动失效
+- **Auto-detect Import Types**: Automatically analyzes `import` and `from ... import` statements in Python files
+- **Distinguish Local/External Imports**:
+  - **Local imports** (cyan/green): Relative imports (e.g., `from .xxx import`) and modules defined in the workspace
+  - **External imports** (yellow/brown): Third-party libraries and Python standard library modules
+- **Real-time Updates**: Automatically updates colorization when file content changes (with 300ms debounce)
+- **Smart Caching**: Workspace module list is cached for 10 seconds, invalidated on file changes
 
-### 支持的导入语法
+### Supported Import Syntax
 
 ```python
-# 相对导入 → 本地（青色/绿色）
+# Relative imports → Local (cyan/green)
 from . import module
 from ..parent_module import something
 from .submodule import func
 
-# 工作区本地模块 → 本地（青色/绿色）
+# Workspace local modules → Local (cyan/green)
 from my_local_module import MyClass
 import my_utils
 
-# 第三方库/标准库 → 外部（黄色/棕色）
+# Third-party/standard library → External (yellow/brown)
 import numpy as np
 from collections import defaultdict
 from django.db import models
 ```
 
-### 默认颜色方案
+### Default Color Scheme
 
-| 导入类型 | Dark+ 主题 | Light+ 主题 |
-|---------|-----------|------------|
-| 本地导入 | `#4EC9B0` (青色) | `#4EC9B0` (绿色) |
-| 外部导入 | `#DCDCAA` (黄色) | `#DCDCAA` (棕色) |
+| Import Type | Dark+ Theme | Light+ Theme |
+|-------------|-------------|--------------|
+| Local | `#4EC9B0` (cyan) | `#4EC9B0` (green) |
+| External | `#DCDCAA` (yellow) | `#DCDCAA` (brown) |
 
-## 配置
+## Configuration
 
-插件支持自定义颜色，你可以在 VS Code 设置中修改：
+The extension supports customizable colors via VS Code settings:
 
-### 设置方法
+### How to Configure
 
-1. 打开设置：`Cmd+,` (Mac) 或 `Ctrl+,` (Windows/Linux)
-2. 搜索 **Python Import Colorizer**
-3. 修改以下配置项：
+1. Open Settings: `Cmd+,` (Mac) or `Ctrl+,` (Windows/Linux)
+2. Search for **Python Import Colorizer**
+3. Modify the following settings:
 
-| 配置项 | 默认值 | 说明 |
-|-------|--------|------|
-| `pythonImportColorizer.localImportColor` | `#4EC9B0` | 本地导入的颜色 |
-| `pythonImportColorizer.externalImportColor` | `#DCDCAA` | 外部导入的颜色 |
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `pythonImportColorizer.localImportColor` | `#4EC9B0` | Color for local imports |
+| `pythonImportColorizer.externalImportColor` | `#DCDCAA` | Color for external imports |
 
-### 通过 settings.json 配置
+### Via settings.json
 
-也可以直接编辑 `settings.json`：
+You can also edit `settings.json` directly:
 
 ```json
 {
@@ -69,58 +69,58 @@ from django.db import models
 }
 ```
 
-### 颜色格式
+### Color Formats
 
-支持所有有效的 CSS 颜色格式：
+All valid CSS color formats are supported:
 
 ```json
 {
-  "pythonImportColorizer.localImportColor": "#FF5733",     // 十六进制
-  "pythonImportColorizer.externalImportColor": "rgb(0, 128, 255)"  // RGB
+  "pythonImportColorizer.localImportColor": "#FF5733",
+  "pythonImportColorizer.externalImportColor": "rgb(0, 128, 255)"
 }
 ```
 
-> 💡 配置修改后立即生效，无需重启 VS Code。
+> 💡 Changes take effect immediately, no VS Code restart required.
 
-## 安装
+## Installation
 
-### 从 VSIX 文件安装
+### Install from VSIX
 
-1. 下载 `python-import-colorizer-0.0.1.vsix` 文件
-2. 在 VS Code 中按 `Cmd+Shift+P` 打开命令面板
-3. 输入并选择 **Extensions: Install from VSIX...**
-4. 选择下载的 `.vsix` 文件
-5. 重启 VS Code
+1. Download the `python-import-colorizer-0.0.1.vsix` file
+2. Press `Cmd+Shift+P` in VS Code to open the command palette
+3. Type and select **Extensions: Install from VSIX...**
+4. Select the downloaded `.vsix` file
+5. Restart VS Code
 
-### 从源码构建安装
+### Build from Source
 
 ```bash
-# 克隆项目
-git clone <repository-url>
+# Clone the repository
+git clone https://github.com/yangyuhe/python-import-colorizer.git
 cd python-import-colorizer
 
-# 安装依赖
-npm install
+# Install dependencies
+pnpm install
 
-# 编译 TypeScript
-npm run compile
+# Compile TypeScript
+pnpm run compile
 
-# 打包 VSIX
+# Package VSIX
 npx @vscode/vsce package
 
-# 安装生成的 .vsix 文件
+# Install the generated .vsix file
 code --install-extension python-import-colorizer-0.0.1.vsix
 ```
 
-## 使用说明
+## Usage
 
-1. **打开 Python 文件**：插件会在你打开 `.py` 文件时自动激活
-2. **查看着色效果**：导入语句会自动着色
-3. **无需配置**：插件默认启用语义高亮
+1. **Open a Python file**: The extension activates automatically when you open a `.py` file
+2. **View the colorized imports**: Import statements are automatically colorized
+3. **No configuration needed**: Semantic highlighting is enabled by default
 
-### 前置条件
+### Prerequisites
 
-确保 VS Code 设置中启用了语义高亮（插件会自动配置）：
+Ensure semantic highlighting is enabled in VS Code settings (the extension configures this automatically):
 
 ```json
 {
@@ -128,36 +128,39 @@ code --install-extension python-import-colorizer-0.0.1.vsix
 }
 ```
 
-### 工作区模块识别
+### Workspace Module Detection
 
-插件会扫描当前工作区根目录来识别本地模块：
+The extension scans the workspace root directory to identify local modules:
 
-- 所有 `.py` 文件（不含扩展名）会被识别为本地模块
-- 包含 `__init__.py` 的目录会被识别为本地包
+- All `.py` files (without extension) are recognized as local modules
+- Directories containing `__init__.py` are recognized as local packages
 
-例如，如果你的工作区结构如下：
+For example, given this workspace structure:
 
 ```
 my_project/
-├── utils.py          # → import utils 会被着色为本地导入
+├── utils.py          # → import utils will be colorized as local
 ├── models/
-│   └── __init__.py   # → import models 会被着色为本地导入
+│   └── __init__.py   # → import models will be colorized as local
 └── main.py
 ```
 
-## 开发
+## Development
 
 ```bash
-# 编译
-npm run compile
+# Compile
+pnpm run compile
 
-# 监听模式编译
-npm run watch
+# Watch mode
+pnpm run watch
 
-# 调试
-# 按 F5 启动 Extension Development Host
+# Run tests
+pnpm test
+
+# Debug
+# Press F5 to launch Extension Development Host
 ```
 
-## 许可证
+## License
 
 MIT
