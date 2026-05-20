@@ -14,6 +14,21 @@
       "[python]": {
         "editor.semanticHighlighting.enabled": true
       }
+    },
+    "configuration": {
+      "title": "Python Import Colorizer",
+      "properties": {
+        "pythonImportColorizer.localImportColor": {
+          "type": "string",
+          "default": "#4EC9B0",
+          "description": "Color for local imports (relative imports and workspace modules)"
+        },
+        "pythonImportColorizer.externalImportColor": {
+          "type": "string",
+          "default": "#DCDCAA",
+          "description": "Color for external imports (third-party libraries and standard library)"
+        }
+      }
     }
   },
   "scripts": {

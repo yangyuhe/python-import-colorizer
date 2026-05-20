@@ -31,12 +31,51 @@ from collections import defaultdict
 from django.db import models
 ```
 
-### 颜色方案
+### 默认颜色方案
 
 | 导入类型 | Dark+ 主题 | Light+ 主题 |
 |---------|-----------|------------|
 | 本地导入 | `#4EC9B0` (青色) | `#4EC9B0` (绿色) |
 | 外部导入 | `#DCDCAA` (黄色) | `#DCDCAA` (棕色) |
+
+## 配置
+
+插件支持自定义颜色，你可以在 VS Code 设置中修改：
+
+### 设置方法
+
+1. 打开设置：`Cmd+,` (Mac) 或 `Ctrl+,` (Windows/Linux)
+2. 搜索 **Python Import Colorizer**
+3. 修改以下配置项：
+
+| 配置项 | 默认值 | 说明 |
+|-------|--------|------|
+| `pythonImportColorizer.localImportColor` | `#4EC9B0` | 本地导入的颜色 |
+| `pythonImportColorizer.externalImportColor` | `#DCDCAA` | 外部导入的颜色 |
+
+### 通过 settings.json 配置
+
+也可以直接编辑 `settings.json`：
+
+```json
+{
+  "pythonImportColorizer.localImportColor": "#4EC9B0",
+  "pythonImportColorizer.externalImportColor": "#DCDCAA"
+}
+```
+
+### 颜色格式
+
+支持所有有效的 CSS 颜色格式：
+
+```json
+{
+  "pythonImportColorizer.localImportColor": "#FF5733",     // 十六进制
+  "pythonImportColorizer.externalImportColor": "rgb(0, 128, 255)"  // RGB
+}
+```
+
+> 💡 配置修改后立即生效，无需重启 VS Code。
 
 ## 安装
 

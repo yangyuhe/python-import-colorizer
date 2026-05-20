@@ -179,15 +179,27 @@ async function classifyImport(
   return "importExternal";
 }
 
-// Create decoration types for local and external imports
-const localImportDecorationType = vscode.window.createTextEditorDecorationType({
-  color: "#4EC9B0", // cyan (Dark+) / green (Light+)
-});
+// Decoration types - will be created/updated based on configuration
+let localImportDecorationType: vscode.TextEditorDecorationType;
+let externalImportDecorationType: vscode.TextEditorDecorationType;
 
-const externalImportDecorationType =
-  vscode.window.createTextEditorDecorationType({
-    color: "#DCDCAA", // yellow (Dark+) / brown (Light+)
+function createDecorationTypes() {
+  const config = vscode.workspace.getConfiguration("pythonImportColorizer");
+  const localColor = config.get<string>("localImportColor", "#4EC9B0");
+  const externalColor = config.get<string>("externalImportColor", "#DCDCAA");
+
+  // Dispose old decoration types if they exist
+  localImportDecorationType?.dispose();
+  externalImportDecorationType?.dispose();
+
+  // Create new decoration types with current colors
+  localImportDecorationType = vscode.window.createTextEditorDecorationType({
+    color: localColor,
   });
+  externalImportDecorationType = vscode.window.createTextEditorDecorationType({
+    color: externalColor,
+  });
+}
 
 async function updateDecorations(editor: vscode.TextEditor) {
   if (editor.document.languageId !== "python") {
@@ -236,10 +248,31 @@ function scheduleUpdate(editor: vscode.TextEditor) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+  // Initialize decoration types with current configuration
+  createDecorationTypes();
+
   // Update decorations for the currently active editor
   if (vscode.window.activeTextEditor) {
     updateDecorations(vscode.window.activeTextEditor);
   }
+
+  // Recreate decoration types when configuration changes
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeConfiguration((event) => {
+      if (
+        event.affectsConfiguration("pythonImportColorizer.localImportColor") ||
+        event.affectsConfiguration("pythonImportColorizer.externalImportColor")
+      ) {
+        createDecorationTypes();
+        // Re-apply decorations to all visible editors
+        vscode.window.visibleTextEditors.forEach((editor) => {
+          if (editor.document.languageId === "python") {
+            updateDecorations(editor);
+          }
+        });
+      }
+    })
+  );
 
   // Update decorations when switching to a different editor
   context.subscriptions.push(
