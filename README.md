@@ -1,5 +1,7 @@
 # Python Import Colorizer
 
+[![GitHub](https://img.shields.io/badge/GitHub-yangyuhe/python--import--colorizer-blue?logo=github)](https://github.com/yangyuhe/python-import-colorizer)
+
 一个 VS Code 插件，用于区分并着色 Python 导入语句：**本地导入**和**外部导入**一目了然。
 
 ## 功能介绍

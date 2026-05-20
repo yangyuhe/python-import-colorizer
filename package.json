@@ -3,6 +3,10 @@
   "displayName": "Python Import Colorizer",
   "description": "Colorize Python imports by source: local or external",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yangyuhe/python-import-colorizer.git"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
