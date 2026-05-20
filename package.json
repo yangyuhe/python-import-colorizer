@@ -8,6 +8,7 @@
     "url": "https://github.com/yangyuhe/python-import-colorizer.git"
   },
   "publisher": "hexiang",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.74.0"
   },
